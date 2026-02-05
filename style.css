@@ -1,11 +1,11 @@
-* {
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-:root {
-    --primary: #e50914;
+ root {
+    --primary#e50914;
     --primary-dark: #b20710;
     --secondary: #ffd700;
     --dark: #0a0a0a;
