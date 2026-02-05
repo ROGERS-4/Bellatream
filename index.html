@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="BELLASTREAM - Stream unlimited movies and series in HD quality">
+    <meta name="keywords" content="movies, streaming, watch online, HD movies, series">
+    <title>BELLASTREAM - Stream Unlimited Movies & Series</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAA7AAAAOwBeShxvQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAKHSURBVFiF7ZdNaBNBGIafsWl6qBevHryIIAheRPDgQRAFD4J/By8ePHhQxIMHLyJ4EEHw4EEQvAiCBy8ievAgqAcP4kEQBBEEQRBBEAQRBEEQBP+w6+y3yWaTbJJNs6nQBy7ZnZ2Z95lvZr6ZBf5jG4FSAO8BfANQADAHYALAKIBdOAUdBvAewAaAKoBtAL8AVAFMA3gC4DyATk8E+gG8BLClCG8C+AxgHsAbAIsA1hXXAXwA8AhAj08SRwF8UrxXxUUAbwGsAKiY4q7C2TIWgVMAPlq+bRQAvFbkSwq3lP4WgCdZSdwH8FPxWwRwBcBxU3gPgJsAFkzxFMC9rCRmFI8ZAIcS+HcAuGWS+AVgOCuJQRXTAAb+wm8AwGvF4z6APe0SGAYwo/g0AIw54NuheFwx7Q60S2BExa4DOOrARwN4pnj1+SVwVcWaAM57EC8q/kdH9fySOK2If3LENUei35TABRWbALDbA/kOAPdVv3MkDnklcUQR/g7AR+W04ZgEX6u+91XHQVcS11W8CaBH9Rii0pLUSdskSvpT/J6lJXFNxX4A2KuIO1QckqS+pqFHZY1bjSQOKcIlAF0KH1C4pHCpqQyp1h8A+lJJPFexUosTg1T9lhQuN5E4rPiPx5DYp/gtKVxpInFM8R9LQ+K44j/hSuKk4ruUhsRJxX/ClcQpxXc5DYkziv+kK4mzivdSGhLnFP9JVxLnFe/lNCS0/+RrVxIXFO+vSSTOKv6LriQuKt7fkkgcVfznXUlcUrx/JZG4rPj/dCVxRfH+nUTijuL9x5WE9l/87UrimuL9N4nEDcX7TxKJm4r37yQSvyjQrpHQJvTAM2VSTUDCqUKVgGqF80iZHlsHUgZ/AKTCpU6Ns7HfAAAAAElFTkSuQmCC">
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="logo">BELLASTREAM</div>
+        <nav>
+            <a href="#home" onclick="showHome()">Home</a>
+            <a href="#favorites" onclick="showFavorites()">My Favorites</a>
+            <button class="contact-btn" onclick="openContactModal()">Contact Us</button>
+        </nav>
+    </header>
+
+    <!-- Contact Modal -->
+    <div class="modal" id="contactModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeContactModal()">&times;</span>
+            <h2>Get in Touch</h2>
+            
+            <div class="contact-option" onclick="openWhatsApp('manager')">
+                <span class="contact-icon">💬</span>
+                <div>
+                    <div style="font-weight: 600;">Contact Manager</div>
+                    <div style="font-size: 14px; color: var(--text-gray);">+254 755 660 053</div>
+                </div>
+            </div>
+
+            <div class="contact-option" onclick="openWhatsApp('ceo')">
+                <span class="contact-icon">👔</span>
+                <div>
+                    <div style="font-weight: 600;">Contact CEO</div>
+                    <div style="font-size: 14px; color: var(--text-gray);">+92 344 0242439</div>
+                </div>
+            </div>
+
+            <div class="contact-option" onclick="openWhatsApp('channel')">
+                <span class="contact-icon">📢</span>
+                <div>
+                    <div style="font-weight: 600;">Join Our Channel</div>
+                    <div style="font-size: 14px; color: var(--text-gray);">Get updates & news</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Search Section -->
+    <div class="search-container">
+        <div class="search-box">
+            <input type="text" class="search-input" id="searchInput" placeholder="Search for movies, series, documentaries...">
+            <span class="search-icon">🔍</span>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div id="mainContent">
+        <!-- Trending Now Section -->
+        <section class="section" id="trending">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="trending-badge">🔥 Trending Now</span>
+                </h2>
+            </div>
+            <div class="movie-grid" id="trendingGrid">
+                <div class="loading">
+                    <div class="spinner"></div>
+                    Loading trending content...
+                </div>
+            </div>
+        </section>
+
+        <!-- Genre Sections -->
+        <section class="section" id="genres">
+            <div class="section-header">
+                <h2 class="section-title">Browse by Genre</h2>
+            </div>
+            <div class="genre-tabs" id="genreTabs"></div>
+            <div class="movie-grid" id="genreGrid"></div>
+        </section>
+
+        <!-- Popular Movies -->
+        <section class="section" id="popular">
+            <div class="section-header">
+                <h2 class="section-title">Popular Movies</h2>
+            </div>
+            <div class="movie-grid" id="popularGrid"></div>
+        </section>
+
+        <!-- Top Rated -->
+        <section class="section" id="toprated">
+            <div class="section-header">
+                <h2 class="section-title">Top Rated</h2>
+            </div>
+            <div class="movie-grid" id="topratedGrid"></div>
+        </section>
+
+        <!-- Upcoming -->
+        <section class="section" id="upcoming">
+            <div class="section-header">
+                <h2 class="section-title">Coming Soon</h2>
+            </div>
+            <div class="movie-grid" id="upcomingGrid"></div>
+        </section>
+    </div>
+
+    <!-- Favorites Section -->
+    <section class="section" id="favoritesSection" style="display: none;">
+        <div class="section-header">
+            <h2 class="section-title">❤️ My Favorites</h2>
+        </div>
+        <div class="movie-grid" id="favoritesGrid">
+            <div class="empty-state">
+                <div style="font-size: 64px; margin-bottom: 20px;">🎬</div>
+                <h3>No favorites yet!</h3>
+                <p>Click the heart icon on any movie to add it here.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Player Modal -->
+    <div class="player-modal" id="playerModal">
+        <span class="close-player" onclick="closePlayer()">&times;</span>
+        <div class="player-container">
+            <div class="player-header">
+                <div class="player-title" id="playerTitle">Movie Title</div>
+                <div class="quality-selector">
+                    <button class="quality-btn active" data-quality="1080p" onclick="changeQuality('1080p')">1080p</button>
+                    <button class="quality-btn" data-quality="720p" onclick="changeQuality('720p')">720p</button>
+                    <button class="quality-btn" data-quality="480p" onclick="changeQuality('480p')">480p</button>
+                    <button class="quality-btn" data-quality="360p" onclick="changeQuality('360p')">360p</button>
+                </div>
+            </div>
+            <div class="player-video" id="playerVideo">
+                <iframe width="100%" height="100%" frameborder="0" allowfullscreen allow="autoplay; encrypted-media" id="videoFrame"></iframe>
+            </div>
+            <div class="player-info">
+                <div class="player-stats">
+                    <span class="stat">⭐ <span id="playerRating">0.0</span></span>
+                    <span class="stat">📅 <span id="playerYear">2024</span></span>
+                    <span class="stat">👁️ <span id="playerViewers">0</span> watching</span>
+                </div>
+                <p class="player-description" id="playerDescription"></p>
+                <div class="player-actions">
+                    <button class="action-btn" id="favoriteActionBtn" onclick="toggleFavoriteFromPlayer()">
+                        <span id="playerFavoriteIcon">🤍</span> <span id="favoriteText">Add to Favorites</span>
+                    </button>
+                    <button class="action-btn" onclick="shareMovie()">
+                        <span>📤</span> Share
+                    </button>
+                    <button class="action-btn" onclick="reportIssue()">
+                        <span>⚠️</span> Report
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">BELLASTREAM</div>
+            <div class="footer-links">
+                <a href="#" onclick="openContactModal(); return false;">Contact Us</a>
+                <a href="#" onclick="alert('Terms of Service coming soon!'); return false;">Terms of Service</a>
+                <a href="#" onclick="alert('Privacy Policy coming soon!'); return false;">Privacy Policy</a>
+            </div>
+            <p class="footer-text">©2026 | Powered by Rodgers</p>
+            <p class="footer-text" style="margin-top: 10px;">Your premium destination for unlimited streaming</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
